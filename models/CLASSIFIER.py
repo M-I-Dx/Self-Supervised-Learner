@@ -17,7 +17,7 @@ from pl_bolts.models.self_supervised.ssl_finetuner import SSLFineTuner
 from pytorch_lightning.metrics import Accuracy
 
 #Internal Imports
-import SSLEvaluator
+from .evaluator import SSLEvaluator
 from dali_utils.dali_transforms import SimCLRTransform #same transform as SimCLR, but only 1 copy
 from dali_utils.lightning_compat import ClassifierWrapper
 
