@@ -21,19 +21,16 @@ class SSLEvaluator(nn.Module):
             self.block_forward = nn.Sequential(
                 Flatten(),
                 nn.Dropout(p=p),
-                nn.Linear(n_input, n_hidden, bias=False),
-                nn.BatchNorm1d(n_hidden),
+                nn.Linear(n_input, n_hidden, bias=True),
                 nn.ReLU(inplace=True),
                 nn.Dropout(p=p),
-                nn.Linear(n_hidden, n_hidden, bias=False),
-                nn.BatchNorm1d(n_hidden),
+                nn.Linear(n_hidden, n_hidden//2, bias=True),
                 nn.ReLU(inplace=True),
                 nn.Dropout(p=p),
-                nn.Linear(n_hidden, n_hidden, bias=False),
-                nn.BatchNorm1d(n_hidden),
+                nn.Linear(n_hidden//2, n_hidden//4, bias=True),
                 nn.ReLU(inplace=True),
                 nn.Dropout(p=p),
-                nn.Linear(n_hidden, n_classes, bias=True),
+                nn.Linear(n_hidden//4, n_classes, bias=True),
                 nn.Softmax(),
             )
 
